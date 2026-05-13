@@ -140,11 +140,12 @@ body {
   align-items: center;
 }
 
-.modal video {
+.modal iframe {
   width: 90%;
   max-width: 400px;
+  aspect-ratio: 16/9;
+  border: none;
   border-radius: 12px;
-  outline: none;
 }
 
 .modal img {
@@ -228,9 +229,7 @@ body {
 
 <!-- VIDEO MODAL -->
 <div class="modal" id="videoModal">
-  <video id="videoPlayer" controls playsinline>
-    <source src="video.mp4" type="video/mp4">
-  </video>
+  <iframe id="videoFrame" src="" allowfullscreen></iframe>
 </div>
 
 <!-- AVATAR MODAL -->
@@ -249,9 +248,7 @@ document.addEventListener("click", function(e) {
     if (el.dataset.zalo) window.open("https://zalo.me/" + el.dataset.zalo);
 
     if (el.dataset.action === "gallery") {
-      const player = document.getElementById("videoPlayer");
-      player.currentTime = 0;
-      player.play();
+      document.getElementById("videoFrame").src = "https://www.youtube.com/embed/LsEXa9dJoZE?autoplay=1";
       document.getElementById("videoModal").style.display = "flex";
     }
   }, 100);
@@ -260,8 +257,7 @@ document.addEventListener("click", function(e) {
 document.querySelectorAll(".modal").forEach(function(m) {
   m.addEventListener("click", function() {
     m.style.display = "none";
-    var vid = m.querySelector("video");
-    if (vid) { vid.pause(); vid.currentTime = 0; }
+    m.querySelectorAll("iframe").forEach(function(i) { i.src = ""; });
   });
 });
 
