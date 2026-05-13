@@ -87,7 +87,7 @@ body {
 }
 
 /* TEXT */
-.name { font-size: 20px; font-weight: 700; margin-top: 10px; }
+.name { font-size: 20px; font-weight: 700; margin-top: 24px; }
 .bio { font-size: 14px; opacity: 0.85; }
 
 /* SOCIAL */
@@ -140,17 +140,18 @@ body {
   align-items: center;
 }
 
-.modal iframe, .modal img {
+.modal iframe {
   width: 90%;
   max-width: 400px;
+  aspect-ratio: 16/9;
+  border: none;
   border-radius: 12px;
 }
 
-/* QR */
-.qr img {
-  width: 120px;
-  margin-top: 20px;
-  border-radius: 10px;
+.modal img {
+  width: 90%;
+  max-width: 400px;
+  border-radius: 12px;
 }
 </style>
 </head>
@@ -175,16 +176,19 @@ body {
 
   <!-- SOCIAL -->
   <div class="social">
-    <svg class="icon" data-link="https://www.tiktok.com/@connhikhuchadong" viewBox="0 0 24 24" fill="white">
-      <path d="M19 7.5a7 7 0 0 1-4-1.3V14a5 5 0 1 1-5-5h.5v2H10a3 3 0 1 0 3 3V2h2a5 5 0 0 0 4 3.5z"/>
+    <!-- TikTok -->
+    <svg class="icon" data-link="https://www.tiktok.com/@connhikhuchadong" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.5a8.16 8.16 0 0 0 4.77 1.52V7.55a4.85 4.85 0 0 1-1-.86z"/>
     </svg>
 
-    <svg class="icon" data-link="https://www.facebook.com/share/1G6diwqHoq/?mibextid=wwXIfr" viewBox="0 0 24 24" fill="white">
-      <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2V9.5c0-2 1.2-3.1 3-3.1z"/>
+    <!-- Facebook -->
+    <svg class="icon" data-link="https://www.facebook.com/share/1G6diwqHoq/?mibextid=wwXIfr" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M24 12.073C24 5.445 18.627 0 12 0S0 5.445 0 12.073c0 6.03 4.388 11.03 10.125 11.927v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.514c-1.491 0-1.956.925-1.956 1.875v2.25h3.328l-.532 3.49h-2.796v8.437C19.612 23.103 24 18.103 24 12.073z"/>
     </svg>
 
-    <svg class="icon" data-phone="0326462544" viewBox="0 0 24 24" fill="white">
-      <path d="M6.6 10.8a15 15 0 0 0 6.6 6.6"/>
+    <!-- Phone -->
+    <svg class="icon" data-phone="0326462544" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
     </svg>
   </div>
 
@@ -205,7 +209,7 @@ body {
     </div>
   </div>
 
-  <div class="card" data-action="form">
+  <div class="card" data-link="https://dangcapnc.io.vn">
     <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png">
     <div class="text">
       <div class="title">ĐĂNG KÝ LỚP HỌC</div>
@@ -221,21 +225,11 @@ body {
     </div>
   </div>
 
-  <!-- QR -->
-  <div class="qr">
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://YOUR_LINK_HERE">
-  </div>
-
 </div>
 
 <!-- VIDEO MODAL -->
 <div class="modal" id="videoModal">
-  <iframe id="videoFrame" src=""></iframe>
-</div>
-
-<!-- FORM MODAL -->
-<div class="modal" id="formModal">
-  <iframe id="formFrame" src=""></iframe>
+  <iframe id="videoFrame" src="" allowfullscreen></iframe>
 </div>
 
 <!-- AVATAR MODAL -->
@@ -254,27 +248,22 @@ document.addEventListener("click", function(e) {
     if (el.dataset.zalo) window.open("https://zalo.me/" + el.dataset.zalo);
 
     if (el.dataset.action === "gallery") {
-      videoFrame.src = "https://www.youtube.com/embed/dQw4w9WgXcQ";
-      videoModal.style.display = "flex";
-    }
-
-    if (el.dataset.action === "form") {
-      formFrame.src = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform";
-      formModal.style.display = "flex";
+      document.getElementById("videoFrame").src = "https://www.youtube.com/embed/LsEXa9dJoZE?autoplay=1";
+      document.getElementById("videoModal").style.display = "flex";
     }
   }, 100);
 });
 
-// modal close
-document.querySelectorAll(".modal").forEach(m => {
-  m.noscript = () => {
+document.querySelectorAll(".modal").forEach(function(m) {
+  m.addEventListener("click", function() {
     m.style.display = "none";
-    m.querySelectorAll("iframe").forEach(i => i.src = "");
-  };
+    m.querySelectorAll("iframe").forEach(function(i) { i.src = ""; });
+  });
 });
 
-// avatar preview
-avatar.noscript = () => imgModal.style.display = "flex";
+document.getElementById("avatar").addEventListener("click", function() {
+  document.getElementById("imgModal").style.display = "flex";
+});
 </script>
 
 </body>
