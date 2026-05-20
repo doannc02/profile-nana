@@ -323,16 +323,15 @@ function render() {
   var app  = document.getElementById("app");
   var data = coaches[key];
 
-  if (!data) {
-    // HLV không tồn tại
-    app.innerHTML = '<div class="not-found"><strong>🥋</strong>'
-      + (key
-          ? "Không tìm thấy HLV "<b>" + key + "</b>"."
-          : "Vui lòng quét lại mã QR hoặc liên hệ võ đường.")
-      + "</div>";
-    document.title = "HLV · Võ đường CNK";
-    return;
-  }
+if (!data) {
+  app.innerHTML = '<div class="not-found"><strong>🥋</strong>'
+    + (key
+        ? 'Không tìm thấy HLV "<b>' + key + '</b>".'
+        : "Vui lòng quét lại mã QR hoặc liên hệ võ đường.")
+    + "</div>";
+  document.title = "HLV · Võ đường CNK";
+  return;
+}
 
   document.title = data.name + " · Võ đường CNK";
 
