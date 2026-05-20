@@ -29,7 +29,7 @@ const coaches = {
     videoEmbed: "https://www.youtube.com/embed/LsEXa9dJoZE?autoplay=1",
   },
  "nguyen-cong-doan": {
-    name:   "Hứa Văn Cường",Cường
+    name:   "Hứa Văn Cường",
     title:  "Huấn luyện viên",
     bio:    "Cơ sở Hòa Bình • Võ Đường CNK Hà Đông",
     phone:  "0345047485",
