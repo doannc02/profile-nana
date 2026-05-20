@@ -1,4 +1,4 @@
-js// ── DỮ LIỆU HLV ──
+// ── DỮ LIỆU HLV ──
 // Thêm / sửa thông tin HLV tại đây.
 // Key = giá trị URL param ?hlv=...
 const coaches = {
