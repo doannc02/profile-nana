@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HLV Nguyễn Ngọc Anh</title>
+    <title>HLV Võ đường CNK</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet">
@@ -106,8 +106,8 @@ body {
 }
 
 /* ── PROFILE TEXT ── */
-.name { font-size: 22px; font-weight: 700; margin-top: 22px; letter-spacing: -0.3px; }
-.bio  { font-size: 14px; opacity: 0.8; margin-top: 8px; line-height: 1.5; }
+.name  { font-size: 22px; font-weight: 700; margin-top: 22px; letter-spacing: -0.3px; }
+.bio   { font-size: 14px; opacity: 0.8; margin-top: 8px; line-height: 1.5; }
 
 /* ── SOCIAL ── */
 .social {
@@ -127,6 +127,7 @@ body {
 }
 
 .icon:hover { transform: scale(1.22) rotate(-6deg); }
+.icon.hidden { display: none; }
 
 /* ── CARDS ── */
 .cards { display: flex; flex-direction: column; gap: 12px; }
@@ -154,6 +155,7 @@ body {
 }
 
 .card:active { transform: scale(0.97); transition-duration: 0.1s; }
+.card.hidden { display: none; }
 
 .card-icon {
   width: 46px;
@@ -167,6 +169,15 @@ body {
 .card-title { font-size: 14px; font-weight: 700; line-height: 1.35; }
 .card-desc  { font-size: 12px; color: #666; margin-top: 3px; }
 .card-arrow { color: #ccc; font-size: 22px; font-weight: 300; flex-shrink: 0; }
+
+/* ── NOT FOUND ── */
+.not-found {
+  margin-top: 60px;
+  opacity: 0.8;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.not-found strong { font-size: 40px; display: block; margin-bottom: 12px; }
 
 /* ── MODAL ── */
 .modal {
@@ -217,11 +228,11 @@ body {
   display: block;
 }
 
-/* ── SCROLL ANIMATIONS (re-trigger every time) ── */
+/* ── SCROLL ANIMATIONS ── */
 [data-anim] {
   opacity: 0;
   will-change: opacity, transform;
-  transition: none; /* no transition while outside viewport */
+  transition: none;
 }
 
 [data-anim="up"]    { transform: translateY(30px); }
@@ -255,178 +266,196 @@ body {
   .container { padding: 120px 32px 96px; }
 }
 
-/* ── RESPONSIVE: SMALL MOBILE ── */
 @media (max-width: 380px) {
   .name { font-size: 19px; }
   .card-title { font-size: 13px; }
 }
-</style>
+    </style>
   </head>
   <body>
 
     <div class="topbar">
-      <div>Beacons</div>
-      <div>Try free</div>
+      <div>Võ đường CNK</div>
+      <div>HLV Profile</div>
     </div>
 
-    <div class="container">
-
-      <!-- AVATAR -->
-      <div class="avatar" id="avatar" data-anim="scale">
-        <img src="na.jpeg" alt="HLV Nguyễn Ngọc Anh">
-        <div class="badge">✔</div>
-      </div>
-
-      <div class="name" data-anim="up" style="--d:.08s">HLV Nguyễn Ngọc
-        Anh</div>
-      <div class="bio" data-anim="up" style="--d:.15s">Cơ sở Kim Giang • Võ
-        Đường CNK Hà Đông</div>
-
-      <!-- SOCIAL ICONS -->
-      <div class="social" data-anim="up" style="--d:.22s">
-        <!-- TikTok -->
-        <svg class="icon" data-link="https://www.tiktok.com/@connhikhuchadong"
-          viewBox="0 0 24 24" fill="white">
-          <path
-            d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.5a8.16 8.16 0 0 0 4.77 1.52V7.55a4.85 4.85 0 0 1-1-.86z" />
-        </svg>
-        <!-- Facebook -->
-        <svg class="icon"
-          data-link="https://www.facebook.com/share/1G6diwqHoq/?mibextid=wwXIfr"
-          viewBox="0 0 24 24" fill="white">
-          <path
-            d="M24 12.073C24 5.445 18.627 0 12 0S0 5.445 0 12.073c0 6.03 4.388 11.03 10.125 11.927v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.514c-1.491 0-1.956.925-1.956 1.875v2.25h3.328l-.532 3.49h-2.796v8.437C19.612 23.103 24 18.103 24 12.073z" />
-        </svg>
-        <!-- Phone -->
-        <svg class="icon" data-phone="0326462544" viewBox="0 0 24 24"
-          fill="white">
-          <path
-            d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-        </svg>
-      </div>
-
-      <!-- CARDS -->
-      <div class="cards">
-
-        <div class="card" data-action="gallery" data-anim="up" style="--d:.06s">
-          <img class="card-icon"
-            src="https://cdn-icons-png.flaticon.com/512/1829/1829586.png" alt>
-          <div class="card-text">
-            <div class="card-title">Video giới thiệu Võ đường CNK Hà Đông</div>
-            <div class="card-desc">Xem thêm...</div>
-          </div>
-          <span class="card-arrow">›</span>
-        </div>
-
-        <div class="card" data-zalo="0326462544" data-anim="up"
-          style="--d:.14s">
-          <img class="card-icon"
-            src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg"
-            alt>
-          <div class="card-text">
-            <div class="card-title">LIÊN HỆ ZALO</div>
-            <div class="card-desc">0326.462.544</div>
-          </div>
-          <span class="card-arrow">›</span>
-        </div>
-
-        <div class="card" data-link="https://www.dangcapnc.io.vn/#contact"
-          data-anim="up" style="--d:.22s">
-          <img class="card-icon"
-            src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt>
-          <div class="card-text">
-            <div class="card-title">ĐĂNG KÝ LỚP HỌC</div>
-            <div class="card-desc">Lựa chọn cơ sở học phù hợp</div>
-          </div>
-          <span class="card-arrow">›</span>
-        </div>
-
-        <div class="card"
-          data-link="https://www.facebook.com/share/1G6diwqHoq/?mibextid=wwXIfr"
-          data-anim="up" style="--d:.30s">
-          <img class="card-icon"
-            src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt>
-          <div class="card-text">
-            <div class="card-title">FACEBOOK</div>
-            <div class="card-desc">Hoạt động võ đường</div>
-          </div>
-          <span class="card-arrow">›</span>
-        </div>
-
-      </div>
+    <div class="container" id="app">
+      <!-- nội dung được render động bởi JS -->
     </div>
 
     <!-- VIDEO MODAL -->
     <div class="modal" id="videoModal">
       <div class="modal-content">
-        <iframe id="videoFrame" src allowfullscreen></iframe>
+        <iframe id="videoFrame" src="" allowfullscreen></iframe>
       </div>
     </div>
 
     <!-- AVATAR MODAL -->
     <div class="modal" id="imgModal">
       <div class="modal-content">
-        <img class="modal-img" src="na.jpeg" alt="HLV Nguyễn Ngọc Anh">
+        <img class="modal-img" id="modalAvatar" src="" alt="">
       </div>
     </div>
 
+    <!-- Load coaches data first -->
+    <script src="coaches.js"></script>
+
     <script>
+// ── ĐỌC PARAM ?hlv= TỪ URL ──
+function getParam(key) {
+  return new URLSearchParams(window.location.search).get(key) || "";
+}
+
 // ── OPEN / CLOSE MODAL ──
 function openModal(id) {
   document.getElementById(id).classList.add("open");
 }
 function closeModal(modal) {
   modal.classList.remove("open");
-  setTimeout(function() {
-    modal.querySelectorAll("iframe").forEach(function(i) { i.src = ""; });
+  setTimeout(function () {
+    modal.querySelectorAll("iframe").forEach(function (i) { i.src = ""; });
   }, 320);
 }
 
-// ── CLICK HANDLER ──
-document.addEventListener("click", function(e) {
-  // Interactable elements
+// ── RENDER PROFILE ──
+function render() {
+  var key  = getParam("hlv");
+  var app  = document.getElementById("app");
+  var data = coaches[key];
+
+  if (!data) {
+    // HLV không tồn tại
+    app.innerHTML = '<div class="not-found"><strong>🥋</strong>'
+      + (key
+          ? "Không tìm thấy HLV "<b>" + key + "</b>"."
+          : "Vui lòng quét lại mã QR hoặc liên hệ võ đường.")
+      + "</div>";
+    document.title = "HLV · Võ đường CNK";
+    return;
+  }
+
+  document.title = data.name + " · Võ đường CNK";
+
+  // Cập nhật avatar modal
+  document.getElementById("modalAvatar").src = data.avatar;
+  document.getElementById("modalAvatar").alt = data.name;
+
+  // Tiktok icon ẩn nếu không có link
+  var tiktokHidden = data.tiktok ? "" : " hidden";
+  var fbHidden     = data.facebook ? "" : " hidden";
+
+  // Card video ẩn nếu không có embed
+  var videoHidden = data.videoEmbed ? "" : " hidden";
+
+  app.innerHTML =
+    // AVATAR
+    '<div class="avatar" id="avatar" data-anim="scale">'
+    + '<img src="' + data.avatar + '" alt="' + data.name + '">'
+    + '<div class="badge">✔</div>'
+    + '</div>'
+
+    // NAME + BIO
+    + '<div class="name" data-anim="up" style="--d:.08s">' + data.name + '</div>'
+    + '<div class="bio"  data-anim="up" style="--d:.15s">' + (data.title || "") + '<br>' + (data.bio || "") + '</div>'
+
+    // SOCIAL ICONS
+    + '<div class="social" data-anim="up" style="--d:.22s">'
+
+    // TikTok
+    + '<svg class="icon' + tiktokHidden + '" data-link="' + (data.tiktok || "") + '" viewBox="0 0 24 24" fill="white">'
+    + '<path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.5a8.16 8.16 0 0 0 4.77 1.52V7.55a4.85 4.85 0 0 1-1-.86z"/>'
+    + '</svg>'
+
+    // Facebook
+    + '<svg class="icon' + fbHidden + '" data-link="' + (data.facebook || "") + '" viewBox="0 0 24 24" fill="white">'
+    + '<path d="M24 12.073C24 5.445 18.627 0 12 0S0 5.445 0 12.073c0 6.03 4.388 11.03 10.125 11.927v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.514c-1.491 0-1.956.925-1.956 1.875v2.25h3.328l-.532 3.49h-2.796v8.437C19.612 23.103 24 18.103 24 12.073z"/>'
+    + '</svg>'
+
+    // Phone
+    + '<svg class="icon" data-phone="' + (data.phone || "") + '" viewBox="0 0 24 24" fill="white">'
+    + '<path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>'
+    + '</svg>'
+
+    + '</div>'
+
+    // CARDS
+    + '<div class="cards">'
+
+    // Video card
+    + '<div class="card' + videoHidden + '" data-action="video" data-anim="up" style="--d:.06s">'
+    + '<img class="card-icon" src="https://cdn-icons-png.flaticon.com/512/1829/1829586.png" alt>'
+    + '<div class="card-text"><div class="card-title">Video giới thiệu Võ đường CNK Hà Đông</div><div class="card-desc">Xem thêm...</div></div>'
+    + '<span class="card-arrow">›</span></div>'
+
+    // Zalo card
+    + '<div class="card" data-zalo="' + (data.zalo || data.phone || "") + '" data-anim="up" style="--d:.14s">'
+    + '<img class="card-icon" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt>'
+    + '<div class="card-text"><div class="card-title">LIÊN HỆ ZALO</div><div class="card-desc">' + (data.zalo || data.phone || "") + '</div></div>'
+    + '<span class="card-arrow">›</span></div>'
+
+    // Register card
+    + '<div class="card" data-link="' + (data.registerUrl || "") + '" data-anim="up" style="--d:.22s">'
+    + '<img class="card-icon" src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt>'
+    + '<div class="card-text"><div class="card-title">ĐĂNG KÝ LỚP HỌC</div><div class="card-desc">Lựa chọn cơ sở học phù hợp</div></div>'
+    + '<span class="card-arrow">›</span></div>'
+
+    // Facebook card
+    + '<div class="card' + fbHidden + '" data-link="' + (data.facebook || "") + '" data-anim="up" style="--d:.30s">'
+    + '<img class="card-icon" src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt>'
+    + '<div class="card-text"><div class="card-title">FACEBOOK</div><div class="card-desc">Hoạt động võ đường</div></div>'
+    + '<span class="card-arrow">›</span></div>'
+
+    + '</div>';
+
+  // Gán sự kiện avatar
+  document.getElementById("avatar").addEventListener("click", function () {
+    openModal("imgModal");
+  });
+
+  // Scroll animations
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      } else {
+        entry.target.classList.remove("visible");
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -16px 0px" });
+
+  document.querySelectorAll("[data-anim]").forEach(function (el) {
+    observer.observe(el);
+  });
+}
+
+// ── CLICK HANDLER (delegated) ──
+document.addEventListener("click", function (e) {
   var el = e.target.closest("[data-link],[data-phone],[data-zalo],[data-action]");
   if (el) {
-    setTimeout(function() {
-      if (el.dataset.link)  window.open(el.dataset.link, "_blank");
-      if (el.dataset.phone) location.href = "tel:" + el.dataset.phone;
-      if (el.dataset.zalo)  window.open("https://zalo.me/" + el.dataset.zalo, "_blank");
-      if (el.dataset.action === "gallery") {
-        document.getElementById("videoFrame").src =
-          "https://www.youtube.com/embed/LsEXa9dJoZE?autoplay=1";
+    setTimeout(function () {
+      var key = getParam("hlv");
+      var data = coaches[key] || {};
+      if (el.dataset.link  && el.dataset.link !== "")  window.open(el.dataset.link, "_blank");
+      if (el.dataset.phone && el.dataset.phone !== "") location.href = "tel:" + el.dataset.phone;
+      if (el.dataset.zalo  && el.dataset.zalo !== "")  window.open("https://zalo.me/" + el.dataset.zalo, "_blank");
+      if (el.dataset.action === "video" && data.videoEmbed) {
+        document.getElementById("videoFrame").src = data.videoEmbed;
         openModal("videoModal");
       }
     }, 80);
     return;
   }
 
-  // Close modal when clicking backdrop (outside modal-content)
+  // Đóng modal khi click backdrop
   var modal = e.target.closest(".modal");
   if (modal && !e.target.closest(".modal-content")) {
     closeModal(modal);
   }
 });
 
-// Avatar click → show photo
-document.getElementById("avatar").addEventListener("click", function() {
-  openModal("imgModal");
-});
-
-// ── SCROLL ANIMATIONS: re-trigger every time element enters viewport ──
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(entry) {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    } else {
-      entry.target.classList.remove("visible");
-    }
-  });
-}, { threshold: 0.12, rootMargin: "0px 0px -16px 0px" });
-
-document.querySelectorAll("[data-anim]").forEach(function(el) {
-  observer.observe(el);
-});
-</script>
+// ── KHỞI ĐỘNG ──
+render();
+    </script>
 
   </body>
 </html>
